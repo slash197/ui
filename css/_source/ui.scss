@@ -1,0 +1,247 @@
+/* 
+ * Created on Jan 18, 2019, 12:55:59 PM
+ * Author slash web design https://slashwebdesign.studio
+ */
+
+@import 'colours';
+
+html {
+	body {
+		padding: 0px;
+		margin: 0px;
+		font-family: Roboto, sans-serif;
+		font-size: 14px;
+		line-height: 2em;
+		background-color: $w2;
+		
+		.menu {
+			background-color: $w5;
+			
+			ul {
+				display: inline-block;
+				list-style: none;
+				line-height: 3em;
+				font-size: 1.3em;
+				padding: 0px;
+				margin: 0px;
+				width: 49.9%;
+				
+				li {
+					cursor: pointer;
+					display: inline-block;
+					padding: 0px 20px;
+				}
+			}
+			ul.left {
+				text-align: left;
+				
+				li {
+					color: $w6;
+				}
+				li:hover {
+					color: $w8;
+				}
+			}
+			ul.right {
+				text-align: right;
+				
+				li {
+					color: $b4;
+				}
+				li:hover {
+					color: $w8;
+				}
+			}
+		}
+		
+		.content {
+			padding: 10px;
+			
+			.dd {
+				overflow: hidden;
+			}
+			.dd.card {
+				height: 31.5px;
+			}
+			.dd.box {
+				height: 35.3px;
+			}
+			.dd.section {
+				height: 35px;
+			}
+			.dd[data-state="open"] {
+				height: auto;
+			}
+			
+			.col {
+				display: inline-block;
+				width: calc(49.9% - 10px);
+				vertical-align: top;
+			}
+			.col:nth-child(2) {
+				margin-right: 10px;
+			}
+			
+			.card {
+				background-color: $w4;
+				padding: 10px;
+				margin: 0px 10px 10px 0px;
+				box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.5);
+				
+				.header {
+					color: $w7;
+					font-size: 1.5em;
+					font-weight: 500;
+					line-height: 1.5em;
+					cursor: pointer;
+					margin-bottom: 10px;
+					
+					span.fas {
+						margin-right: 10px;
+						display: inline-block;
+						width: 14px;
+					}
+					
+					.edit {
+						float: right;
+						margin-right: 10px;
+					}
+				}
+				
+				.box {
+					border: 1px solid $w5;
+					box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.5);
+					margin: 0px 0px 10px 0px;
+					
+					.header {
+						background-color: $b1;
+						font-size: 1.4em;
+						line-height: 1.8em;
+						margin-bottom: 10px;
+						cursor: pointer;
+
+						span.fas {
+							margin: 0px 10px;
+							display: inline-block;
+							width: 14px;
+						}
+					}
+					
+					.section {
+						.header {
+							background-color: transparent;
+							margin-bottom: 10px;
+						}
+						
+						.category {
+							.header {
+								color: $b4;
+								font-size: 1.2em;
+								font-weight: 400;
+							}
+							
+							.text {
+								.header {
+									font-size: 1em;
+								}
+								.sub-header {
+									color: $w10;
+									margin: 10px 0px;
+								}
+							}
+						}
+						.category.red {
+							.header {
+								color: $r3;
+							}
+						}
+					}
+					
+					.tooltip-holder {
+						position: relative;
+						
+						.tooltip {
+							display: inline-block;
+							vertical-align: text-top;
+							width: 14px;
+							height: 14px;
+							margin-left: 5px;
+
+							span.fas.fa-info-circle {
+								font-size: 0.6em;
+								margin: 0px;
+								vertical-align: top;
+							}
+							span.content {
+								display: none;
+								position: absolute;
+								bottom: 0px;
+								left: 0px;
+								background-color: rgba(0, 0, 0, 0.7);
+								padding: 10px 10px;
+								color: #ffffff;
+								white-space: nowrap;
+								font-size: 12px;
+								line-height: 12px;
+								transform: translateX(-50%);
+							}
+						}
+						.tooltip:hover {
+							span.content {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		.text-center {
+			text-align: center;
+		}
+		.backdrop {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+			background-color: rgba(0, 0, 0, 0.7);
+		}
+		.modal {
+			position: absolute;
+			width: 300px;
+			top: 20%;
+			left: 50%;
+			margin-left: -150px;
+			background-color: $w8;
+			border-radius: 2px;
+			padding: 10px 15px;
+			
+			h3 {
+				color: $w3;
+				font-weight: normal;
+				margin: 0px;
+				padding: 0px;
+			}
+			.divider {
+				height: 1px;
+				margin: 10px 0px;
+				background-color: $r4;
+			}
+			.action {
+				text-align: right;
+				
+				button {
+					display: inline-block;
+					border: none;
+					background-color: #e0e0e0;
+					padding: 10px 15px;
+					margin-right: 10px;
+				}
+				button:last-child {
+					margin-right: 0px;
+				}
+			}
+		}
+	}
+}

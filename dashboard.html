@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ui</title>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+		<link rel="stylesheet" href="css/ui.css" type="text/css">
+	</head>
+	<body>
+		<div class="menu">
+			<ul class="left">
+				<li><span class="fas fa-file"></span></li>
+				<li><span class="fas fa-copy"></span></li>
+			</ul>
+			<ul class="right">
+				<li>item 1</li>
+				<li>item 2</li>
+				<li>item 3</li>
+				<li>item 4</li>
+				<li>item 5</li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="card dd" data-state="open">
+				<div class="header"><span class="fas fa-caret-down"></span>Card 1</div>
+				
+				<div class="col">
+					<div class="box dd" data-state="open">
+						<div class="header">
+							<span class="fas fa-caret-down"></span>Type 1 drop down (edit)
+							<div class="edit">
+								<span class="fas fa-times-circle"></span>
+								<span class="fas fa-check-circle"></span>
+							</div>
+						</div>
+						
+						<div class="section dd" data-state="open">
+							<div class="header">
+								<span class="fas fa-caret-down"></span>
+								Section drop down with tooltip
+								<span class="tooltip-holder">
+									<span class="tooltip">
+										<span class="fas fa-info-circle"></span>
+										<span class="content">This is the tooltip content text</span>			
+									</span>
+								</span>
+							</div>
+					
+							<div class="category dd" data-state="open">
+								<div class="header">
+									<span class="fas fa-caret-down"></span>
+									Category drop down with tooltip
+									<span class="tooltip-holder">
+										<span class="tooltip">
+											<span class="fas fa-info-circle"></span>
+											<span class="content">This is the tooltip content text</span>			
+										</span>
+									</span>
+								</div>
+								
+								<div class="text dd" data-state="open">
+									<div class="header">
+										<span class="fas fa-caret-right"></span>
+										Text drop down with tooltip
+										<span class="tooltip-holder">
+											<span class="tooltip">
+												<span class="fas fa-info-circle"></span>
+												<span class="content">This is the tooltip content text</span>			
+											</span>
+										</span>
+									</div>
+									<div class="sub-header text-center">Centered sub-header</div>
+									<div class="slider-holder">
+										<div class="label"></div>
+										<div>
+											<div class="value"></div>
+											<div class="slider">
+												<div class="bar"></div>
+												<div class="grid"></div>
+												<div class="handle"></div>
+											</div>
+										<div>
+									</div>
+								</div>
+								<div class="text dd" data-state="open">
+									<div class="header">
+										<span class="fas fa-caret-right"></span>
+										Text drop down without tooltip
+									</div>
+								</div>
+								<div class="text dd" data-state="">
+									<div class="header">
+										<span class="fas fa-caret-right"></span>
+										Text drop down without tooltip
+									</div>
+								</div>
+							</div>
+							<div class="category dd" data-state="">
+								<div class="header">
+									<span class="fas fa-caret-right"></span>
+									Category drop down without tooltip
+								</div>
+							</div>
+							<div class="category dd red" data-state="">
+								<div class="header">
+									<span class="fas fa-caret-right"></span>
+									Category drop down without tooltip, red
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="box dd" data-state="open">
+						<div class="header"><span class="fas fa-caret-down"></span>Type 2 drop down</div>
+					</div>
+				</div>
+			</div>
+			<div class="card dd" data-state="open">
+				<div class="header"><span class="fas fa-caret-down"></span>Card 2</div>
+			</div>
+		</div>
+		
+		<script src="js/loader.js"></script>
+	</body>
+</html>
