@@ -1,0 +1,26 @@
+@media only screen and (max-width: 559px) {
+	html {
+		body {
+			.sidebar {
+			}
+			ul.menu {
+				margin-left: 0px;
+			}
+			.content {
+				margin-left: 0px;
+				.card {
+					margin-right: 0px;
+				}
+				.col {
+					display: block;
+					width: 100%;
+				}
+			}
+			.grid {
+				.item {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

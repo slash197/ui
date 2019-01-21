@@ -18,11 +18,35 @@ var UISlider = function(element){
 		total: 0
 	};
 	
+	this.pointerDown = function(){
+		this.handle.isDragged = true;
+	};
+	
+	this.pointerMove = function(e){
+		if (this.handle.isDragged)
+		{
+			var 
+				diff = (e.touches && e.touches.length) ? e.touches[0].pageX - this.handle.el.parent().offsetLeft : e.pageX - this.handle.el.parent().offsetLeft,
+				percent = diff * 100 / this.el.offsetWidth,
+				value = (this.min + (percent * (this.max - this.min) / 100)).round(2);
+
+			if ((value >= this.min) && (value <= this.max))
+			{
+				this.value = value;
+				this.updateValue();
+			}
+		}
+	};
+	
+	this.pointerUp = function(){
+		this.handle.isDragged = false;
+	};
+	
 	this.setup = function(){
-		lg('slider > set up started; width [' + this.el.offsetWidth + ']; min [' + this.min + ']; max [' + this.max + ']; value [' + this.value + ']');
+		//lg('slider > set up started; spacers [' + this.spacer.total + ']; width [' + this.el.offsetWidth + ']; min [' + this.min + ']; max [' + this.max + ']; value [' + this.value + ']');
 
 		// create grid
-		this.grid.append('<div class="horizontal"></div>');
+		this.grid.html('<div class="horizontal"></div>');
 
 		for (var i = 0; i <= this.spacer.total; i++)
 		{
@@ -35,31 +59,14 @@ var UISlider = function(element){
 		// position the handle and attach event listeners
 		this.updateValue();
 		
-		this.handle.el.on('mousedown', function(e){
-			this.handle.isDragged = true;
-		}.bind(this));
+		this.handle.el.on('mousedown', this.pointerDown.bind(this));
+		this.handle.el.on('touchstart', this.pointerDown.bind(this));
+		$('body').on('mousemove', this.pointerMove.bind(this));		
+		$('body').on('touchmove', this.pointerMove.bind(this));		
+		$('body').on('mouseup', this.pointerUp.bind(this));
+		$('body').on('touchend', this.pointerUp.bind(this));
 		
-		$('body').on('mousemove', function(e){
-			if (this.handle.isDragged)
-			{
-				var 
-					diff = e.pageX - this.handle.el.parent().offsetLeft,
-					percent = diff * 100 / this.el.offsetWidth,
-					value = (this.min + (percent * (this.max - this.min) / 100)).round(2);
-
-				if ((value >= this.min) && (value <= this.max))
-				{
-					this.value = value;
-					this.updateValue();
-				}
-			}
-		}.bind(this));
-		
-		$('body').on('mouseup', function(){
-			this.handle.isDragged = false;
-		}.bind(this));
-		
-		lg('slider > setup finished');
+		//lg('slider > setup finished');
 	};
 	
 	this.updateBar = function(){
@@ -113,10 +120,13 @@ var UISlider = function(element){
 		this.grid = this.el.find('.grid');
 		this.bar = this.el.find('.bar');
 		this.handle.el = this.el.find('.handle');
-		this.spacer.total = Math.floor(this.el.offsetWidth / this.spacer.size);
 		this.value = parseFloat(this.el.attr('data-value'));
 		this.min = parseFloat(this.el.attr('data-min'));
 		this.max = parseFloat(this.el.attr('data-max'));
+		
+		this.el.style.width = 'calc(100% - 55px)';
+		this.spacer.total = Math.floor(this.el.offsetWidth / this.spacer.size);
+		
 		
 		this.setup();
 	};
@@ -252,6 +262,10 @@ HTMLElement.prototype.removeClass = function(cls){
 	this.className = temp.join(' ');
 	
 	return this;
+};
+
+HTMLElement.prototype.hasClass = function(cls){
+	return this.className.toLowerCase().indexOf(cls.toLowerCase()) > -1;
 };
 
 NodeList.prototype.on = function(type, callback){
