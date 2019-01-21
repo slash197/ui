@@ -1,5 +1,8 @@
+setupSliders();
+
 $('.dd .header').on('click', function(){
 	var state = (this.parent().attr('data-state'));
+	lg(state);
 	
 	if (state === 'open')
 	{
