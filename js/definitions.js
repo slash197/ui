@@ -5,11 +5,11 @@ var UISlider = function(element){
 	
 	this.el = null;
 	this.grid = null;
+	this.bar = null;
 	
 	this.handle = {
 		el: null,
 		position: 0,
-		origin: 0,
 		isDragged: false
 	};
 	
@@ -33,48 +33,85 @@ var UISlider = function(element){
 		this.el.style.width = (this.spacer.total * this.spacer.size) + 'px';
 		
 		// position the handle and attach event listeners
-		this.updateHandlePosition(this.value);
+		this.updateValue();
 		
 		this.handle.el.on('mousedown', function(e){
 			this.handle.isDragged = true;
-			this.handle.origin = e.clientX;
 		}.bind(this));
 		
 		$('body').on('mousemove', function(e){
 			if (this.handle.isDragged)
 			{
 				var 
-					diff = e.clientX - this.handle.origin,
+					diff = e.pageX - this.handle.el.parent().offsetLeft,
 					percent = diff * 100 / this.el.offsetWidth,
 					value = (this.min + (percent * (this.max - this.min) / 100)).round(2);
-				
-				lg(e.clientX);
-				lg('diff = ' + diff);
-				lg('percent = ' + percent);
-				lg('value = ' + value);
-				this.updateValue(value);
+
+				if ((value >= this.min) && (value <= this.max))
+				{
+					this.value = value;
+					this.updateValue();
+				}
 			}
 		}.bind(this));
 		
-		$('body').on('mouseup', function(e){
+		$('body').on('mouseup', function(){
 			this.handle.isDragged = false;
 		}.bind(this));
 		
 		lg('slider > setup finished');
 	};
 	
-	this.updateHandlePosition = function(value){
-		this.handle.el.style.left = ((this.max + value) * 100 / (this.max - this.min)) + '%';
+	this.updateBar = function(){
+		var width = null; 
+		
+		if (this.min < 0)
+		{	
+			// negative slider
+			width = Math.abs(this.value) * 100 / (this.max - this.min);
+			
+			if (this.value < 0)
+			{
+				this.bar.removeClass('positive').addClass('negative');
+
+				this.bar.style.left = (this.handle.el.offsetLeft + 10) + 'px';
+				this.bar.style.width = width + '%';
+			}
+			else
+			{
+				this.bar.removeClass('negative').addClass('positive');
+
+				this.bar.style.left = Math.abs(this.min) * 100 / (this.max- this.min) + '%';
+				this.bar.style.width = width + '%';
+			}
+		}
+		else
+		{
+			// positive only slider
+			this.bar.removeClass('negative').addClass('positive');
+
+			width = Math.abs(this.value - this.min) * 100 / (this.max - this.min);
+			this.bar.style.width = width + '%';
+		}
 	};
 	
-	this.updateValue = function(value){
-		this.el.parent().find('.value').html(value);
-		this.updateHandlePosition(value);
+	this.updateHandlePosition = function(){
+		var value = (this.value < 0) ? this.max + this.value : this.value;
+		value = this.value - this.min;
+		
+		this.handle.el.style.left = (value * 100 / (this.max - this.min)) + '%';
+		this.updateBar();
+	};
+	
+	this.updateValue = function(){
+		this.el.parent().find('.value').html(this.value);
+		this.updateHandlePosition();
 	};
 	
 	this.init = function(){
-		this.el = element;		
+		this.el = element;
 		this.grid = this.el.find('.grid');
+		this.bar = this.el.find('.bar');
 		this.handle.el = this.el.find('.handle');
 		this.spacer.total = Math.floor(this.el.offsetWidth / this.spacer.size);
 		this.value = parseFloat(this.el.attr('data-value'));
@@ -186,6 +223,35 @@ HTMLElement.prototype.append = function(html){
 
 HTMLElement.prototype.html = function(html){
 	this.innerHTML = html;
+};
+
+HTMLElement.prototype.addClass = function(cls){
+	var 
+		has = false,
+		temp = this.className.split(' ');
+	
+	for (var i = 0; i < temp.length; i++)
+	{
+		if (cls.toLowerCase() === temp[i].toLowerCase()) has = true;
+	}
+	
+	if (!has) temp.push(cls);
+	this.className = temp.join(' ');
+	
+	return this;
+};
+
+HTMLElement.prototype.removeClass = function(cls){
+	var temp = this.className.split(' ');
+	
+	for (var i = 0; i < temp.length; i++)
+	{
+		if (cls.toLowerCase() === temp[i].toLowerCase()) temp.splice(i, 1);
+	}
+	
+	this.className = temp.join(' ');
+	
+	return this;
 };
 
 NodeList.prototype.on = function(type, callback){

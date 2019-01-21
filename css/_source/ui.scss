@@ -3,7 +3,7 @@
  * Author slash web design https://slashwebdesign.studio
  */
 
-@import 'colours';
+@import 'colors';
 
 html {
 	body {
@@ -70,6 +70,15 @@ html {
 				height: 35.3px;
 			}
 			.dd.section {
+				height: 35px;
+			}
+			.dd.category {
+				height: 35px;
+			}
+			.dd.text {
+				height: 30px;
+			}
+			.dd.sub-card {
 				height: 35px;
 			}
 			.dd[data-state="open"] {
@@ -141,11 +150,47 @@ html {
 								color: $b4;
 								font-size: 1.2em;
 								font-weight: 400;
+								background-color: transparent;
 							}
 							
 							.text {
+								padding: 10px 0px;
+								
 								.header {
 									font-size: 1em;
+									
+									.header-menu[data-state="open"] {
+										.fa-bars {
+											color: $w9;
+										}
+										ul {
+											display: block;
+											position: absolute;
+											z-index: 1;
+											right: 100%;
+											top: 0%;
+											list-style: none;
+											margin: 0px;
+											padding: 0px;
+											background-color: $w5;
+											
+											li {
+												white-space: nowrap;
+												padding: 0px 15px;
+											}
+											li:hover {
+												color: $w9;
+											}
+										}
+									}
+									.header-menu {
+										float: right;
+										position: relative;
+										
+										ul {
+											display: none;
+										}
+									}
 								}
 								.sub-header {
 									color: $w10;
@@ -157,6 +202,11 @@ html {
 							.header {
 								color: $r3;
 							}
+						}
+					}
+					.section.inactive {
+						.header {
+							color: $w4;
 						}
 					}
 					
@@ -195,11 +245,118 @@ html {
 							}
 						}
 					}
+					
+					.sub-card {
+						margin: 10px 10px 0px 10px;
+						border: 1px solid $w5;
+						box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.5);
+						
+						.header {
+							background-color: $w5;
+							color: $b4;
+						}
+						.sub-header {
+							color: $w9;
+							font-size: 2em;
+							font-weight: 500;
+							margin: 20px;
+						}
+					}
+					.sub-card:last-child {
+						margin-bottom: 10px;
+					}
 				}
 			}
 		}
 		
+		img.rounded {
+			border-radius: 50%;
+		}
+		img.w100 {
+			max-width: 112px;
+		}
+		form {
+			padding: 0px 40px;
+
+			.form-header {
+				color: $r4;
+			}
+			p {
+				input[type="text"],
+				input[type="password"],
+				input[type="number"] {
+					display: block;
+					width: calc(100% - 20px);
+					background-color: $w5;
+					color: $w6;
+					border: none;
+					border-radius: 5px;
+					line-height: 2em;
+					padding: 5px 10px;
+				}
+				input[type="text"]:focus,
+				input[type="password"]:focus,
+				input[type="number"]:focus {
+					color: $w9;
+				}
+				label {
+					display: block;
+					color: $w7;
+				}
+			}
+		}
+		.grid {
+			margin: 20px;
+			
+			.item {
+				display: inline-block;
+				vertical-align: top;
+				width: 33%;
+				color: $w7;
+				
+				.fas {
+					margin-right: 10px;
+					color: $r4;
+				}
+			}
+		}
+		.rating {
+			display: inline-block;
+			font-size: 3em;
+			
+			.far {
+				color: $w6;
+				cursor: pointer;
+			}
+			.far:hover {
+				color: $b4;
+			}
+		}
+		.large {
+			font-size: 8em;
+			color: $w5;
+		}
+		.badge {
+			display: inline-block;
+			background-color: $r1;
+			color: $w9;
+			font-size: 0.7em;
+			font-weight: 300;
+			line-height: 1em;
+			padding: 3px;
+			border-radius: 5px;
+		}
+		
+		.red-text {
+			color: $r2;
+			font-style: italic;
+			font-size: 0.8em;
+			margin-left: 10px;
+		}
+		
 		.slider-holder {
+			padding: 0px 40px;
+			
 			.label {
 				color: $r4;
 			}
@@ -207,16 +364,20 @@ html {
 				display: inline-block;
 				vertical-align: top;
 				width: 50px;
+				color: $w8;
 			}
 			.slider {
 				display: inline-block;
 				vertical-align: top;
 				height: 15px;
+				margin-top: 6px;
 				width: calc(100% - 55px);
 				position: relative;
 				
 				.grid {
 					position: absolute;
+					margin: 0px;
+					padding: 0px;
 					width: 100%;
 					height: 100%;
 					
@@ -236,6 +397,13 @@ html {
 				}
 				.bar {
 					position: absolute;
+					height: 100%;
+				}
+				.bar.negative {
+					background-color: $r2;
+				}
+				.bar.positive {
+					background-color: $w6;
 				}
 				.handle {
 					position: absolute;
