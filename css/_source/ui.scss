@@ -17,136 +17,76 @@ html {
 		-moz-user-select: none;
 		user-select: none;
 		
-		.sidebar {
-			background-color: $w10;
-			position: fixed;
-			z-index: 2;
-			width: 230px;
-			top: 0px;
-			bottom: 0px;
-			transition: transform 0.3s ease-out;
-			transform: translate3d(0, 0, 0);
-			
-			.far.fa-times-circle {
-				color: $w8;
-				font-size: 1.4em;
-				margin: 9px 0px 0px 9px;
-				cursor: pointer;
-			}
-
-			ul.scrollable-content {
-				height: calc(100% - 120px);
-				overflow-y: auto;
-				margin: 0px;
-				padding: 20px 0px;
-				list-style: none;
-				width: 100%;
-
-				li {
-					a, a:hover {
-						display: block;
-						padding: 7px 10px;
-						color: $w8;
-						font-size: 1em;
-						text-decoration: none;
-						transition: all 0.2s ease;
-
-						.fas {
-							vertical-align: text-bottom;
-							margin: 0px 10px 0px 5px;
-							font-size: 20px;
-						}
-					}
-					a:hover {
-						background-color: $w4;
-						color: $w9;
-					}
-				}
-				li.divider {
-					height: 1px;
-					margin: 5px 10px;
-					background-color: #414141;
-				}
-
-			}
-		}
-		.sidebar.collapsed {
-			transform: translate3d(-230px, 0, 0);
-			
-			ul {
-				li {
-					a {
-						text-align: center;
-
-						span:not(.fas) {
-							display: none;
-						}
-					}
-				}
-			}
-		}
-		
-		ul.menu {
-			margin: 0px 0px 0px 230px;
+		.menu {
 			background-color: $w5;
 			height: 55px;
-			list-style: none;
-			line-height: 3em;
-			font-size: 1.3em;
-			padding: 0px;
-			transition: margin 0.3s ease-out;
-
-			li {
-				cursor: pointer;
-				display: inline-block;
-				padding: 0px 20px;
-				color: $w6;
+			
+			ul {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				line-height: 3em;
+				font-size: 1.3em;
+				
+				li {
+					cursor: pointer;
+					display: inline-block;
+					padding: 0px 20px;
+					color: $w6;
+				}
+				li:hover {
+					color: $w8;
+				}
 			}
-			li:hover {
-				color: $w8;
+			ul.left {
+				float: left;
 			}
-		}
-		ul.menu.extended {
-			margin: 0px;
+			ul.right {
+				float: right;
+			}
+			.mobile-menu {
+				display: none;
+			}
 		}
 		
 		.content {
-			margin-left: 230px;
 			padding: 10px;
-			transition: margin 0.3s ease-out;
-			
-			.dd {
-				overflow: hidden;
-			}
-			.dd.card {
-				height: 31.5px;
-			}
-			.dd.box {
-				height: 35.3px;
-			}
-			.dd.section {
-				height: 35px;
-			}
-			.dd.category {
-				height: 35px;
-			}
-			.dd.text {
-				height: 30px;
-			}
-			.dd.sub-card {
-				height: 35px;
-			}
-			.dd[data-state="open"] {
-				height: auto;
-			}
 			
 			.col {
 				display: inline-block;
 				width: calc(49.9% - 10px);
 				vertical-align: top;
 			}
-			.col:nth-child(2) {
+			.col:first-child {
 				margin-right: 10px;
+			}
+			
+			.collapsible {
+				padding: 10px;
+			}
+			.collapsible[content=""] {
+				padding: 0px;
+			}
+			
+			.dd {
+				.header {
+					position: sticky;
+					top: 0px;
+					bottom: 0px;
+					z-index: 1;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					
+					.txt {
+						display: inline-block;
+						vertical-align: middle;
+						max-width: 50%;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					}
+				}
 			}
 			
 			.card {
@@ -161,7 +101,7 @@ html {
 					font-weight: 500;
 					line-height: 1.5em;
 					cursor: pointer;
-					margin-bottom: 10px;
+					background-color: $w4;
 					
 					span.fas {
 						margin-right: 10px;
@@ -184,7 +124,6 @@ html {
 						background-color: $b1;
 						font-size: 1.4em;
 						line-height: 1.8em;
-						margin-bottom: 10px;
 						cursor: pointer;
 
 						span.fas {
@@ -196,22 +135,20 @@ html {
 					
 					.section {
 						.header {
-							background-color: transparent;
-							margin-bottom: 10px;
+							background-color: $w4;
 						}
 						
 						.category {
 							.header {
+								background-color: $w4;
 								color: $b4;
 								font-size: 1.2em;
 								font-weight: 400;
-								background-color: transparent;
 							}
 							
-							.text[data-state="open"] {
-								padding: 10px 0px;
-								
+							.text {
 								.header {
+									background-color: $w4;
 									font-size: 1em;
 									
 									.header-menu[data-state="open"] {
@@ -222,7 +159,7 @@ html {
 										ul {
 											display: block;
 											position: absolute;
-											z-index: 1;
+											z-index: 2;
 											right: 100%;
 											top: 0%;
 											list-style: none;
@@ -284,7 +221,7 @@ html {
 							span.content {
 								display: none;
 								position: absolute;
-								bottom: 0px;
+								bottom: 100%;
 								left: 0px;
 								background-color: rgba(0, 0, 0, 0.7);
 								padding: 10px 10px;
@@ -292,7 +229,7 @@ html {
 								white-space: nowrap;
 								font-size: 12px;
 								line-height: 12px;
-								transform: translateX(-50%);
+								transform: translateX(-44%);
 							}
 						}
 						.tooltip:hover {
@@ -323,9 +260,6 @@ html {
 					}
 				}
 			}
-		}
-		.content.extended {
-			margin: 0px;
 		}
 		
 		img.rounded {
@@ -475,16 +409,6 @@ html {
 					border-radius: 50%;
 				}
 			}
-		}
-		.header {
-			position: sticky;
-			top: 0px;
-		}
-		.sticky {
-			position: fixed;
-			z-index: 2;
-			width: 100%;
-			top: 0px;
 		}
 		.text-center {
 			text-align: center;

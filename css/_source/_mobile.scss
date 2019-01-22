@@ -1,24 +1,42 @@
 @media only screen and (max-width: 559px) {
 	html {
 		body {
-			.sidebar {
+			.menu {
+				.right {
+					display: none;
+					position: absolute;
+					top: 55px;
+					width: 100%;
+					bottom: 0px;
+					background-color: $w2;
+					float: none;
+					z-index: 10;
+					
+					li {
+						display: block;
+					}
+				}
+				.mobile-menu {
+					display: inline-block;
+					float: right;
+					font-size: 1.3em;
+					color: $w6;
+					line-height: 3em;
+					padding: 0px 10px;
+					cursor: pointer;
+				}
+				.mobile-menu:hover {
+					color: $w8;
+				}
 			}
-			ul.menu {
-				margin-left: 0px;
-			}
+			
 			.content {
-				margin-left: 0px;
-				.card {
-					margin-right: 0px;
-				}
 				.col {
-					display: block;
 					width: 100%;
+					margin: 0px;
 				}
-			}
-			.grid {
-				.item {
-					width: 100%;
+				.collapsible {
+					padding: 10px 0px;
 				}
 			}
 		}

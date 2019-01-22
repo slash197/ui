@@ -1,26 +1,14 @@
 setupSliders();
 
-$('.menu .fa-bars').on('click', function(){
-	if ($('.sidebar').hasClass('collapsed'))
+$('.mobile-menu').on('click', function(){
+	if ($('.menu .right').style.display !== 'block')
 	{
-		$('.sidebar').removeClass('collapsed');
-		$('body > .menu').removeClass('extended');
-		$('body > .content').removeClass('extended');
+		$('.menu .right').style.display = 'block';
 	}
 	else
 	{
-		$('.sidebar').addClass('collapsed');
-		$('body > .menu').addClass('extended');
-		$('body > .content').addClass('extended');
+		$('.menu .right').style.display = 'none';
 	}
-	
-	window.setTimeout(function(){
-		setupSliders();
-	}, 300);
-});
-
-$('.sidebar .fa-times-circle').on('click', function(){
-	$('.menu .fa-bars').click();
 });
 
 $('.header-menu .fa-bars').on('click', function(e){
@@ -39,12 +27,18 @@ $('.header-menu .fa-bars').on('click', function(e){
 });
 
 $('.dd .header').on('click', function(){
-	var state = (this.parent().attr('data-state'));
+	var 
+		parent = this.parent(),
+		state = parent.attr('data-state'),
+		collapsibles = parent.find('.collapsible'),
+		sub = collapsibles.length ? collapsibles[0] : collapsibles;
 	
 	if (state === 'open')
 	{
-		this.parent().attr('data-state', '');
+		parent.attr('data-state', '');
 		this.find('.fa-caret-down').className = 'fas fa-caret-right';
+
+		sub.style.display = 'none';
 		
 		// find header menu items and close them
 		var items = this.find('.header-menu[data-state="open"]');
@@ -65,41 +59,13 @@ $('.dd .header').on('click', function(){
 	}
 	else
 	{
-		this.parent().attr('data-state', 'open');
+		parent.attr('data-state', 'open');
 		this.find('.fa-caret-right').className = 'fas fa-caret-down';
+		
+		sub.style.display = 'block';
 	}
 });
 
 window.onresize = function(){
 	setupSliders();
-};
-
-window.onscroll = function(){
-	return false;
-	var 
-		padding = 0,
-		parent = null,
-		headers = $('.header');
-	
-	for (var i = 0; i < headers.length; i++)
-	{
-		parent = headers[i].parent();
-		
-		if (parent.attr('data-state') === 'open')
-		{
-			if ((window.pageYOffset > headers[i].offsetTop) && (window.pageYOffset < parent.offsetHeight))
-			{
-				padding = parseFloat(window.getComputedStyle($('body')).paddingTop.replace('px', ''));
-				lg(padding);
-				headers[i].addClass('sticky');
-				$('body').style.paddingTop = (padding + headers[i].offsetHeight) + 'px';
-			}
-			else
-			{
-				padding = parseFloat(window.getComputedStyle($('body')).paddingTop.replace('px', ''));
-				headers[i].removeClass('sticky');
-				$('body').style.paddingTop = (padding - headers[i].offsetHeight) + 'px';
-			}
-		}
-	}
 };
