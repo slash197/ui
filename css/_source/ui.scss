@@ -71,8 +71,6 @@ html {
 			.dd {
 				.header {
 					position: sticky;
-					top: 0px;
-					bottom: 0px;
 					z-index: 1;
 					overflow: hidden;
 					text-overflow: ellipsis;
@@ -102,6 +100,8 @@ html {
 					line-height: 1.5em;
 					cursor: pointer;
 					background-color: $w4;
+					top: 0px;
+					z-index: 5;
 					
 					span.fas {
 						margin-right: 10px;
@@ -125,6 +125,8 @@ html {
 						font-size: 1.4em;
 						line-height: 1.8em;
 						cursor: pointer;
+						top: 31.5px;
+						z-index: 4;
 
 						span.fas {
 							margin: 0px 10px;
@@ -136,6 +138,8 @@ html {
 					.section {
 						.header {
 							background-color: $w4;
+							top: 68.6px;
+							z-index: 3;
 						}
 						
 						.category {
@@ -144,12 +148,16 @@ html {
 								color: $b4;
 								font-size: 1.2em;
 								font-weight: 400;
+								top: 105.7px;
+								z-index: 2;
 							}
 							
 							.text {
 								.header {
 									background-color: $w4;
 									font-size: 1em;
+									z-index: 1;
+									top: 135.9px;
 									
 									.header-menu[data-state="open"] {
 										.fas.fa-bars {
@@ -247,12 +255,21 @@ html {
 						.header {
 							background-color: $w5;
 							color: $b4;
+							top: 66.8px;
+							z-index: 3;
 						}
 						.sub-header {
 							color: $w9;
 							font-size: 2em;
 							font-weight: 500;
 							margin: 20px;
+						}
+						
+						.section {
+							.header {
+								top: 103.56px;
+								z-index: 2;
+							}
 						}
 					}
 					.sub-card:last-child {
