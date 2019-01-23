@@ -2,6 +2,9 @@ var UISlider = function(element){
 	this.value = null;
 	this.min = null;
 	this.max = null;
+	this.step = null;
+	this.ticks = null;
+	this.slider = null;
 	
 	this.el = null;
 	this.grid = null;
@@ -81,14 +84,18 @@ var UISlider = function(element){
 			{
 				this.bar.removeClass('positive').addClass('negative');
 
-				this.bar.style.left = (this.handle.el.offsetLeft + 10) + 'px';
+				var 
+					q = (Math.abs(this.min) - Math.abs(this.value)) * 100 / Math.abs(this.min),
+					w = q * Math.abs(this.min) / (this.max - this.min);
+				
+				this.bar.style.left = w + '%';
 				this.bar.style.width = width + '%';
 			}
 			else
 			{
 				this.bar.removeClass('negative').addClass('positive');
 
-				this.bar.style.left = Math.abs(this.min) * 100 / (this.max- this.min) + '%';
+				this.bar.style.left = Math.abs(this.min) * 100 / (this.max - this.min) + '%';
 				this.bar.style.width = width + '%';
 			}
 		}
@@ -111,8 +118,9 @@ var UISlider = function(element){
 	};
 	
 	this.updateValue = function(){
+		this.value = this.slider.get();
 		this.el.parent().find('.value').html(this.value);
-		this.updateHandlePosition();
+		this.updateBar();
 	};
 	
 	this.init = function(){
@@ -123,12 +131,31 @@ var UISlider = function(element){
 		this.value = parseFloat(this.el.attr('data-value'));
 		this.min = parseFloat(this.el.attr('data-min'));
 		this.max = parseFloat(this.el.attr('data-max'));
+		this.step = parseFloat(this.el.attr('data-step'));
+		this.ticks = parseFloat(this.el.attr('data-ticks'));
 		
 		this.el.style.width = 'calc(100% - 55px)';
 		this.spacer.total = Math.floor(this.el.offsetWidth / this.spacer.size);
+		this.grid.html('<div class="horizontal"></div>');
 		
+		this.slider = noUiSlider.create(this.el, {
+			start: [this.value],
+			step: this.step,
+			range: {
+				'min': this.min,
+				'max': this.max
+			},
+			pips: {
+				mode: 'count',
+				values: this.ticks
+			},
+			tooltips: false
+		});
 		
-		this.setup();
+		this.slider.on('slide', this.updateValue.bind(this));
+
+		this.updateValue();
+		//this.setup();
 	};
 	
 	this.init();

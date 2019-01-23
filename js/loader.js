@@ -57,6 +57,8 @@ window.onerror = function(msg, source, line, col, error){
 	if (error) lg(error, 'error');
 };
 
-loadScript('js/definitions.js', function(){
-	loadScript('js/ui.js');
+loadScript('js/nouislider.min.js', function(){
+	loadScript('js/definitions.js', function(){
+		loadScript('js/ui.js');
+	});
 });

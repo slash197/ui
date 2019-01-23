@@ -1,0 +1,39 @@
+.noUi-target {
+	background: transparent;
+	border-radius: 0px;
+	border: none;
+	box-shadow: none;
+	
+	.noUi-handle {
+		background-color: $y2;
+		border: 1px solid $r2;
+		//margin-left: -9px;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		top: -1px;
+		box-shadow: none;
+	}
+	.noUi-handle:before,
+	.noUi-handle:after {
+		display: none;
+	}
+	.noUi-pips-horizontal {
+		padding: 0px;
+		top: 0px;
+		
+		.noUi-value {
+			display: none;
+		}
+		.noUi-marker-normal {
+			display: none;
+		}
+		.noUi-marker {
+			background: $w5;
+			width: 1px;
+		}
+	}
+}
+html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
+	right: -9px;
+}
