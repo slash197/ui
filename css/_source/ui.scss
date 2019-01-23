@@ -19,7 +19,7 @@ html {
 		
 		.menu {
 			background-color: $w5;
-			height: 55px;
+			height: 4em;
 			
 			ul {
 				margin: 0px;
@@ -62,17 +62,13 @@ html {
 			}
 			
 			.collapsible {
-				padding: 10px;
-			}
-			.collapsible[content=""] {
-				padding: 0px;
+				padding: 10px 0px;
 			}
 			
 			.dd {
 				.header {
 					position: sticky;
 					z-index: 1;
-					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
 					
@@ -106,7 +102,7 @@ html {
 					span.fas {
 						margin-right: 10px;
 						display: inline-block;
-						width: 14px;
+						width: 1em;
 					}
 					
 					.edit {
@@ -131,7 +127,7 @@ html {
 						span.fas {
 							margin: 0px 10px;
 							display: inline-block;
-							width: 14px;
+							width: 1em;
 						}
 					}
 					
@@ -197,6 +193,9 @@ html {
 									color: $w10;
 									margin: 10px 0px;
 								}
+								.collapsible {
+									padding: 10px 10px;
+								}
 							}
 						}
 						.category.red {
@@ -229,7 +228,8 @@ html {
 							span.content {
 								display: none;
 								position: absolute;
-								bottom: 100%;
+								z-index: 10;
+								bottom: -100%;
 								left: 0px;
 								background-color: rgba(0, 0, 0, 0.7);
 								padding: 10px 10px;
@@ -373,8 +373,10 @@ html {
 			.value {
 				display: inline-block;
 				vertical-align: top;
-				width: 50px;
+				width: 30px;
 				color: $w8;
+				text-align: right;
+				margin-right: 20px;
 			}
 			.slider {
 				display: inline-block;
