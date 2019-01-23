@@ -16,10 +16,15 @@ html {
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		user-select: none;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-template-rows: 4em auto;
 		
 		.menu {
 			background-color: $w5;
-			height: 4em;
+			display: grid;
+			grid-template-columns: 50% 50%;
+			grid-template-rows: auto;
 			
 			ul {
 				margin: 0px;
@@ -38,11 +43,8 @@ html {
 					color: $w8;
 				}
 			}
-			ul.left {
-				float: left;
-			}
 			ul.right {
-				float: right;
+				text-align: right;
 			}
 			.mobile-menu {
 				display: none;
@@ -51,6 +53,9 @@ html {
 		
 		.content {
 			padding: 10px;
+			display: grid;
+			grid-template-columns: 100%;
+			grid-template-rows: auto auto;
 			
 			.col {
 				display: inline-block;
@@ -66,11 +71,16 @@ html {
 			}
 			
 			.dd {
+				display: grid;
+				grid-template-columns: 100%;
+				grid-template-rows: 2.5em auto;
+				
 				.header {
 					position: sticky;
 					z-index: 1;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+					line-height: 35px;
 					
 					.txt {
 						display: inline-block;
@@ -93,7 +103,6 @@ html {
 					color: $w7;
 					font-size: 1.5em;
 					font-weight: 500;
-					line-height: 1.5em;
 					cursor: pointer;
 					background-color: $w4;
 					top: 0px;
@@ -101,41 +110,38 @@ html {
 					
 					span.fas {
 						margin-right: 10px;
-						display: inline-block;
-						width: 1em;
-					}
-					
-					.edit {
-						float: right;
-						margin-right: 10px;
 					}
 				}
 				
 				.box {
 					border: 1px solid $w5;
 					box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.5);
-					margin: 0px 0px 10px 0px;
 					
 					.header {
 						background-color: $b1;
 						font-size: 1.4em;
-						line-height: 1.8em;
 						cursor: pointer;
-						top: 31.5px;
+						top: 35px;
 						z-index: 4;
+						display: grid;
+						grid-template-columns: 30px auto 70px;
+						grid-template-rows: 100%;
 
 						span.fas {
-							margin: 0px 10px;
-							display: inline-block;
-							width: 1em;
+							margin: 0px 0px 0px 10px;
+							align-self: center;
+						}
+						.edit {
+							margin-right: 0px;
 						}
 					}
 					
 					.section {
 						.header {
 							background-color: $w4;
-							top: 68.6px;
+							top: 70px;
 							z-index: 3;
+							display: block;
 						}
 						
 						.category {
@@ -144,7 +150,7 @@ html {
 								color: $b4;
 								font-size: 1.2em;
 								font-weight: 400;
-								top: 105.7px;
+								top: 105px;
 								z-index: 2;
 							}
 							
@@ -153,7 +159,10 @@ html {
 									background-color: $w4;
 									font-size: 1em;
 									z-index: 1;
-									top: 135.9px;
+									top: 140px;
+									display: grid;
+									grid-template-columns: auto 30px;
+									grid-template-rows: 100%;
 									
 									.header-menu[data-state="open"] {
 										.fas.fa-bars {
@@ -191,7 +200,7 @@ html {
 								}
 								.sub-header {
 									color: $w10;
-									margin: 10px 0px;
+									margin: 0px 0px 10px 0px;
 								}
 								.collapsible {
 									padding: 10px 10px;
@@ -276,6 +285,23 @@ html {
 						margin-bottom: 10px;
 					}
 				}
+				.box2 {
+					.header {
+						display: block;
+						
+						div {
+							display: inline-block;
+							
+							span.fa-tint,
+							span.fa-clipboard {
+								margin-left: 20px;
+							}
+							span.badge {
+								margin-left: 10px;
+							}
+						}
+					}
+				}
 			}
 		}
 		
@@ -317,11 +343,11 @@ html {
 		}
 		.grid {
 			margin: 20px;
+			display: grid;
+			grid-template-columns: auto auto auto;
+			grid-template-rows: auto auto;
 			
 			.item {
-				display: inline-block;
-				vertical-align: top;
-				width: 33%;
 				color: $w7;
 				
 				.fas {

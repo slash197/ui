@@ -2,28 +2,29 @@
 	html {
 		body {
 			.menu {
-				.right {
+				ul.right {
 					display: none;
 					position: absolute;
 					top: 55px;
 					width: 100%;
 					bottom: 0px;
 					background-color: $w2;
-					float: none;
 					z-index: 10;
+					text-align: left;
 					
 					li {
 						display: block;
 					}
 				}
 				.mobile-menu {
-					display: inline-block;
-					float: right;
+					display: block;
+					width: 1.3em;
 					font-size: 1.3em;
 					color: $w6;
 					line-height: 3em;
 					padding: 0px 10px;
 					cursor: pointer;
+					justify-self: right;
 				}
 				.mobile-menu:hover {
 					color: $w8;
@@ -37,6 +38,9 @@
 				}
 				.collapsible {
 					padding: 10px 0px;
+				}
+				.grid {
+					grid-template-columns: auto auto;
 				}
 			}
 		}
