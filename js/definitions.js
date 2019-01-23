@@ -147,7 +147,7 @@ var UISlider = function(element){
 			},
 			pips: {
 				mode: 'count',
-				values: this.ticks
+				values: this.ticks + 1
 			},
 			tooltips: false
 		});
