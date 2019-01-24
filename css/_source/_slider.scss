@@ -3,16 +3,19 @@
 	border-radius: 0px;
 	border: none;
 	box-shadow: none;
+	z-index: 0;
 	
+	.noUi-base {
+	}
 	.noUi-handle {
 		background-color: $y2;
 		border: 1px solid $r2;
-		//margin-left: -9px;
 		width: 16px;
 		height: 16px;
 		border-radius: 50%;
 		top: -1px;
 		box-shadow: none;
+		z-index: 5;
 	}
 	.noUi-handle:before,
 	.noUi-handle:after {
@@ -21,6 +24,7 @@
 	.noUi-pips-horizontal {
 		padding: 0px;
 		top: 0px;
+		z-index: -1;
 		
 		.noUi-value {
 			display: none;

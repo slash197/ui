@@ -181,7 +181,6 @@ html {
 										ul {
 											display: block;
 											position: absolute;
-											z-index: 2;
 											right: 100%;
 											top: 0%;
 											list-style: none;
@@ -445,6 +444,7 @@ html {
 					padding: 0px;
 					width: 100%;
 					height: 100%;
+					z-index: -1;
 					
 					.horizontal {
 						position: absolute;
@@ -463,6 +463,7 @@ html {
 				.bar {
 					position: absolute;
 					height: 100%;
+					z-index: -2;
 				}
 				.bar.negative {
 					background-color: $r2;
