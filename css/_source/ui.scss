@@ -24,7 +24,7 @@ html {
 		.menu {
 			background-color: $w5;
 			display: grid;
-			grid-template-columns: 50% 50%;
+			grid-template-columns: 1fr 3fr;
 			grid-template-rows: auto;
 			
 			ul {
@@ -37,7 +37,7 @@ html {
 				li {
 					cursor: pointer;
 					display: inline-block;
-					padding: 0px 20px;
+					padding: 0px 9px;
 					color: $w6;
 				}
 				li:hover {
@@ -125,14 +125,18 @@ html {
 						top: 35px;
 						z-index: 4;
 						display: grid;
-						grid-template-columns: 30px auto 70px;
+						grid-template-columns: auto 70px;
 						grid-template-rows: 100%;
 
 						span.fas {
 							margin: 0px 0px 0px 10px;
 							align-self: center;
 						}
-						.edit {
+						div:first-child {
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+						div.edit {
 							margin-right: 0px;
 						}
 					}
@@ -143,6 +147,13 @@ html {
 							top: 70px;
 							z-index: 3;
 							display: block;
+							
+							div:first-child {
+								display: inline-block;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								max-width: calc(100% - 20px);
+							}
 						}
 						
 						.category {
@@ -161,15 +172,12 @@ html {
 									font-size: 1em;
 									z-index: 1;
 									top: 140px;
-									display: grid;
-									grid-template-columns: auto 30px;
-									grid-template-rows: 100%;
+									display: block;
 									
+									div:first-child {
+										max-width: calc(100% - 50px);
+									}
 									.header-menu[data-state="open"] {
-										.fas.fa-bars {
-											display: inline-block;
-											color: $w9;
-										}
 										ul {
 											display: block;
 											position: absolute;
@@ -191,9 +199,16 @@ html {
 										}
 									}
 									.header-menu {
+										text-align: center;
 										float: right;
+										display: block;
+										width: 30px;
 										position: relative;
 										
+										span.fas.fa-bars {
+											color: $b4;
+											margin: 0px;
+										}
 										ul {
 											display: none;
 										}
@@ -222,6 +237,8 @@ html {
 					
 					.tooltip-holder {
 						position: relative;
+						display: inline-block;
+						vertical-align: top;
 						
 						.tooltip {
 							display: inline-block;
@@ -267,6 +284,7 @@ html {
 							color: $b4;
 							top: 66.8px;
 							z-index: 3;
+							grid-template-columns: 100%;
 						}
 						.sub-header {
 							color: $w9;
@@ -290,15 +308,21 @@ html {
 					.header {
 						display: block;
 						
+						div:first-child {
+							overflow: hidden;
+							text-overflow: ellipsis;
+							max-width: calc(100% - 100px);
+						}
 						div {
 							display: inline-block;
+							vertical-align: top;
 							
 							span.fa-tint,
 							span.fa-clipboard {
-								margin-left: 20px;
+								margin-left: 10px;
 							}
 							span.badge {
-								margin-left: 10px;
+								margin-left: 5px;
 							}
 						}
 					}
@@ -308,6 +332,7 @@ html {
 		
 		img.rounded {
 			border-radius: 50%;
+			margin-left: 10px;
 		}
 		img.w100 {
 			max-width: 112px;
@@ -372,6 +397,7 @@ html {
 		.large {
 			font-size: 8em;
 			color: $w5;
+			margin-left: 10px;
 		}
 		.badge {
 			display: inline-block;
