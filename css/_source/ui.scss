@@ -177,6 +177,21 @@ html {
 									div:first-child {
 										max-width: calc(100% - 50px);
 									}
+									.header-menu {
+										text-align: center;
+										float: right;
+										display: block;
+										width: 30px;
+										position: relative;
+										
+										span.fas.fa-bars {
+											color: $b4;
+											margin: 0px;
+										}
+										ul {
+											display: none;
+										}
+									}
 									.header-menu[data-state="open"] {
 										ul {
 											display: block;
@@ -197,21 +212,6 @@ html {
 											}
 										}
 									}
-									.header-menu {
-										text-align: center;
-										float: right;
-										display: block;
-										width: 30px;
-										position: relative;
-										
-										span.fas.fa-bars {
-											color: $b4;
-											margin: 0px;
-										}
-										ul {
-											display: none;
-										}
-									}
 								}
 								.sub-header {
 									color: $w10;
@@ -219,6 +219,18 @@ html {
 								}
 								.collapsible {
 									padding: 10px 10px;
+								}
+							}
+							.text[data-state=""] {
+								.header {
+									.header-menu {
+										span.fas.fa-bars {
+											display: none;
+										}
+										ul {
+											display: none;
+										}
+									}
 								}
 							}
 						}
