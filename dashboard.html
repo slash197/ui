@@ -28,14 +28,14 @@
 		</div>
 		
 		<div class="content">
-			<div class="card dd" data-state="open">
+			<div class="card dd" data-state="">
 				<div class="header"><span class="fas fa-caret-down"></span>Card 1</div>
 				<div class="collapsible">
 					<div class="col">
-						<div class="box dd" data-state="open">
+						<div class="box dd" data-state="">
 							<div class="header">
 								<div>
-									<span class="fas fa-caret-down"></span>
+									<span class="fas fa-caret-right"></span>
 									Type 1 drop down (edit)
 								</div>
 								<div class="edit">
@@ -44,7 +44,7 @@
 								</div>
 							</div>
 
-							<div class="collapsible">
+							<div class="collapsible" style="display: none">
 								<div class="section dd" data-state="open">
 									<div class="header">
 										<div>
@@ -160,7 +160,8 @@
 														</div>
 														<form>
 															<div class="form-header">Header text for form input</div>
-															<p><input type="text" value="Form input field" /></p>
+															<p><input type="text" class="active" value="Form input field" /></p>
+															<p><input type="text" value="Form input field inactive" /></p>
 															<p><label><input type="checkbox" /> checkbox</label></p>
 														</form>
 													</div>
@@ -223,12 +224,23 @@
 								</div>
 
 								<div class="collapsible">
-									<span class="fas fa-check-circle large"></span>
-									<div class="rating">
-										<span class="far fa-star"></span>
-										<span class="far fa-smile"></span>
-										<span class="far fa-meh"></span>
-										<span class="far fa-frown"></span>
+									<div class="grid-icons">
+										<span class="fas fa-check-circle large"></span>
+										<div class="rating-holder">
+											<div></div>
+											<div class="rating">
+												<span class="far fa-star"></span>
+												<span class="far fa-smile"></span>
+												<span class="far fa-meh"></span>
+												<span class="far fa-frown"></span>
+											</div>
+											<div class="rating">
+												<span class="far fa-star"></span>
+												<span class="far fa-smile"></span>
+												<span class="far fa-meh"></span>
+												<span class="far fa-frown"></span>
+											</div>
+										</div>
 									</div>
 
 									<div class="sub-header">
@@ -255,18 +267,44 @@
 											<div>
 												<span class="fas fa-caret-down"></span>
 												Section drop down
+												<span class="red-text">red text</span>
 											</div>
 										</div>
-										<div class="collapsible"></div>
+										<div class="collapsible">
+											<div class="chat">
+												<div class="buttons">
+													<div><button class="blue">+<span class="far fa-file"></span></button></div>
+													<div><button class="blue">+<span class="far fa-comment"></span></button></div>
+													<div><button class="blue">+<span class="fas fa-paperclip"></span></button></div>
+												</div>
+												<div class="text-left"><span class="red fas fa-paperclip"></span>left aligned text with red icon</div>
+												<div class="icon-middle"><span class="fas fa-paperclip"></span></div>
+												<div class="bubble bubble-left">
+													<span class="far fa-comment red"></span>
+													<div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+												</div>
+												<div class="text-right"><span class="far fa-check-circle"></span>right aligned text with icon</div>
+												<div class="bubble bubble-right">
+													<div>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially.</div>
+													<span class="far fa-comment blue"></span>
+												</div>
+												<div class="icon-middle"><span class="fas fa-paperclip"></span></div>
+												<div class="text-right">right aligned text with blue icon<span class="fas fa-user-plus blue"></span></div>
+												<div class="blue-box">
+													<div><span class="far fa-check-circle"></span>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially.</div>
+													<span class="far fa-file"></span>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="section dd inactive" data-state="open">
+									<div class="section dd inactive" data-state="">
 										<div class="header">
 											<div>
-												<span class="fas fa-caret-down"></span>
+												<span class="fas fa-caret-right"></span>
 												Section drop down (inactive)
 											</div>
 										</div>
-										<div class="collapsible"></div>
+										<div class="collapsible" style="display: none"></div>
 									</div>
 								</div>
 							</div>
@@ -279,12 +317,23 @@
 								</div>
 
 								<div class="collapsible">
-									<img src="img/na.png" class="w100 rounded" />
-									<div class="rating">
-										<span class="far fa-star"></span>
-										<span class="far fa-smile"></span>
-										<span class="far fa-meh"></span>
-										<span class="far fa-frown"></span>
+									<div class="grid-icons">
+										<img src="img/na.png" class="w100 rounded" />
+										<div class="rating-holder">
+											<div></div>
+											<div class="rating">
+												<span class="far fa-star"></span>
+												<span class="far fa-smile"></span>
+												<span class="far fa-meh"></span>
+												<span class="far fa-frown"></span>
+											</div>
+											<div class="rating">
+												<span class="far fa-star"></span>
+												<span class="far fa-smile"></span>
+												<span class="far fa-meh"></span>
+												<span class="far fa-frown"></span>
+											</div>
+										</div>
 									</div>
 
 									<div class="sub-header">
@@ -324,7 +373,7 @@
 												<div class="collapsible">
 													<form>
 														<div class="form-header">text header for form info</div>
-														<p><input type="text" value="Form input field" disabled="disabled" /></p>
+														<p><input type="text" value="form text (display only, no input)" disabled="disabled" /></p>
 													</form>
 													<div class="slider-holder">
 														<div class="label">
@@ -344,6 +393,48 @@
 															</div>
 														</div>
 													</div>
+													<div class="mono-spaced">
+														<div class="mono-header">
+															text header with tooltip
+															<span class="tooltip-holder">
+																<span class="tooltip">
+																	<span class="fas fa-info-circle"></span>
+																	<span class="content">This is the tooltip content text</span>			
+																</span>
+															</span>
+														</div>
+														<div class="content">monospaced text</div>
+													</div>
+													<div class="mono-spaced">
+														<div class="mono-header">
+															text header with tooltip
+															<span class="tooltip-holder">
+																<span class="tooltip">
+																	<span class="fas fa-info-circle"></span>
+																	<span class="content">This is the tooltip content text</span>			
+																</span>
+															</span>
+														</div>
+														<div class="content small">
+															<table>
+																<thead>
+																	<tr>
+																		<th>##.##</th>
+																		<th>##.##</th>
+																		<th>##.##</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td colspan="3">xxx <span class="red">red text</span> ...............................</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3">xxx ........................................</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -355,10 +446,10 @@
 				</div>
 				</div>
 			</div>
-			<div class="card dd" data-state="open">
-				<div class="header"><span class="fas fa-caret-down"></span>Card 2</div>
+			<div class="card dd" data-state="">
+				<div class="header"><span class="fas fa-caret-right"></span>Card 2</div>
 				
-				<div class="collapsible">
+				<div class="collapsible" style="display: none">
 					<div class="col">
 						<div class="box dd" data-state="open">
 							<div class="header">
@@ -388,6 +479,56 @@
 							</div>
 							<div class="collapsible"></div>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card dd" data-state="open">
+				<div class="header"><span class="fas fa-caret-down"></span>Card 3</div>
+				
+				<div class="collapsible">
+					<img class="rect" src="img/na.png" />
+
+					<div class="sub-header">Header text</div>
+
+					<div class="grid">
+						<div class="item"><span class="fas fa-th-large"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-th"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-grip-horizontal"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-th-large"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-th"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-grip-horizontal"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-th-large"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-th"></span>text /w icon</div>
+						<div class="item"><span class="fas fa-grip-horizontal"></span>text /w icon</div>
+					</div>
+
+					<div class="sub-header">Header text</div>
+
+					<div class="simple-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+					
+					<div class="box dd" data-state="">
+						<div class="header">
+							<div>
+								<span class="fas fa-caret-right"></span>
+								Type 1 drop down
+							</div>
+						</div>
+
+						<div class="collapsible" style="display: none"></div>
+					</div>
+					<div class="box box2 dd" data-state="">
+						<div class="header">
+							<div>
+								<span class="fas fa-caret-right"></span>
+								Type 2 drop down
+							</div>
+							<div>
+								<span class="fas fa-tint"></span><span class="badge">33</span>
+								<span class="fas fa-clipboard"></span><span class="badge">7</span>
+							</div>
+						</div>
+						
+						<div class="collapsible" style="display: none"></div>
 					</div>
 				</div>
 			</div>
