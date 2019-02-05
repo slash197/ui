@@ -1,5 +1,28 @@
 setupSliders();
 
+$('.edit .fas').on('click', function(e){
+	e.stopPropagation();
+	
+	var 
+		parent = this.parent(), 
+		state = parent.dataset.mode;
+	
+	if (state === 'editing')
+	{
+		parent.attr('data-mode', 'display');
+		parent.find('.fa-times-circle').style.display = 'none';
+		parent.find('.fa-check-circle').style.display = 'none';
+		parent.find('.fa-pencil-alt').style.display = 'inline-block';
+	}
+	else
+	{
+		parent.attr('data-mode', 'editing');
+		parent.find('.fa-times-circle').style.display = 'inline-block';
+		parent.find('.fa-check-circle').style.display = 'inline-block';
+		parent.find('.fa-pencil-alt').style.display = 'none';
+	}
+});
+
 $('.mobile-menu').on('click', function(){
 	if ($('.menu .right').style.display !== 'block')
 	{

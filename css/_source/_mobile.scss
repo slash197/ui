@@ -42,6 +42,25 @@
 				.grid {
 					grid-template-columns: auto auto;
 				}
+				.card {
+					.box {
+						.section {
+							.chat {
+								.bubble.bubble-left {
+									div {
+										width: calc(90% - 80px);
+									}
+								}
+								.bubble.bubble-right {
+									div {
+										width: calc(90% - 80px);
+										margin-left: 10%;
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
